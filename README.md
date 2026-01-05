@@ -43,6 +43,9 @@ Kubernetes Commands
 21. Create secret from command line. Kubectl create secret generic mysql-secret —type=kubernetes.io/basic-auth --from-literal=password=alta3
 22. Annotating pods with labels and listing them: a) kubectl label pod demo-pod awesome=sauce -n demo. b) kubectl get pods —show-labels    
 23. Showing a custom label column kubectl get pods -L app -n demo
+24. Command to delete label: kubectl label pod nginx-deployment-69f8b47599-2m8v7 app-
+25. Listing deployment: kubectl get deploy
+26. Listing replicaset: kubectl get replicaset
 
          
  
