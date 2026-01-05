@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: label-pod
+  namespace: demo
+  labels:
+    cool: beans
+spec:
+  containers:
+  - name: count
+    image: fousmane/nginx-repo:v1.0
+    resources:
+      requests:
+        cpu: 100m
+        memory: "30M"
+      limits:
+        cpu: 200m
+        memory: "60M"
+
