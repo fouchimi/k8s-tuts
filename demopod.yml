@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: demopod
+  namespace: demo
+spec:
+  containers:
+  - name: nginx-custom
+    image: fousmane/nginx-repo:v1.0
+    resources:
+      requests:
+        cpu: 250m
+        memory: "40M"
+      limits:
+        cpu: 500m
+        memory: "80M"
+    ports:
+    - containerPort: 80
