@@ -41,7 +41,8 @@ Kubernetes Commands
 19. Watch pods memory and cpu size in namespace: watch -n 0.1 kubectl describe ns demo
 20. Create config map: kubectl create configmaps dem-heroes —from-file=heroes.txt
 21. Create secret from command line. Kubectl create secret generic mysql-secret —type=kubernetes.io/basic-auth --from-literal=password=alta3
-22. Showing labels: kubectl get pods —show-labels     
+22. Annotating pods with labels and listing them: a) kubectl label pod demo-pod awesome=sauce -n demo. b) kubectl get pods —show-labels    
+
 
          
  
