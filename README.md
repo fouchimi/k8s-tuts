@@ -42,7 +42,7 @@ Kubernetes Commands
 20. Create config map: kubectl create configmaps dem-heroes —from-file=heroes.txt
 21. Create secret from command line. Kubectl create secret generic mysql-secret —type=kubernetes.io/basic-auth --from-literal=password=alta3
 22. Annotating pods with labels and listing them: a) kubectl label pod demo-pod awesome=sauce -n demo. b) kubectl get pods —show-labels    
-
+23. Showing a custom label column kubectl get pods -L app -n demo
 
          
  
