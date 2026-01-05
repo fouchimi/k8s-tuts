@@ -46,6 +46,8 @@ Kubernetes Commands
 24. Command to delete label: kubectl label pod nginx-deployment-69f8b47599-2m8v7 app-
 25. Listing deployment: kubectl get deploy
 26. Listing replicaset: kubectl get replicaset
+27. Command to rollout deployment: kubectl rollout history deploy nginx-deployment -n demo
+28. Command to rollback deployment: kubectl rollout undo deploy nginx-deployment -n demo
 
          
  
