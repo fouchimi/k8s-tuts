@@ -1,0 +1,36 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: test-network-NetworkPolicy
+  namespace: demo # Target the NS of the pods you wish to control!
+spec:
+  podSelector:
+    matchLabels: # what pods are we controlling
+      role: db
+  policyTypes:
+  - Ingress # traffic coming IN
+  - Egress. # traffic going OUT
+  ingress: 
+  - from:
+    - ipBlock: # MUST be from this IP range
+        cidr: 172.17.0.0/16
+        except:
+        - 172.17.1.0/24
+    - namespaceSelector: # MUST be from this namespace
+        matchLabels:
+          project: myproject
+    - podSelector: # MUST be from pod with this label
+        matchLabels:
+          role: frontend
+    ports:
+    - protocol: TCP
+      port: 6379
+  egress:
+  - to:
+    - ipBlock:
+        cidr: 10.0.0.0/24
+    ports:
+    - protocol: TCP
+      port: 5978
+
+  
