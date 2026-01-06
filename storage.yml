@@ -1,0 +1,57 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: alta3-pv
+  namespace: demo
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 2Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/mtn/data"
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: nginx-pvc
+  namespace: demo
+spec:
+  storageClassName: manual
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-with-pv
+  namespace: demo
+spec:
+  nodeSelector:
+    kubernetes.io/hostname: k8s-tuts-control-plane
+  containers:
+  - name: nginx-with-pv
+    image: nginx:1.18.0
+    ports:
+    - name: http
+      containerPort: 80
+      protocol: TCP
+    resources:
+      requests:
+        cpu: 250m
+        memory: "65M"
+      limits:
+        cpu: 500m
+        memory: "130M"
+    volumeMounts:
+    - name: nginx-pv-storage
+      mountPath: "/data"
+  volumes:
+  - name: nginx-pv-storage
+    persistentVolumeClaim:
+      claimName: nginx-pvc
+  
