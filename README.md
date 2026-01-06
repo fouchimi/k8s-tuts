@@ -48,6 +48,9 @@ Kubernetes Commands
 26. Listing replicaset: kubectl get replicaset
 27. Command to rollout deployment: kubectl rollout history deploy nginx-deployment -n demo
 28. Command to rollback deployment: kubectl rollout undo deploy nginx-deployment -n demo
+29. Command to list persistent volume and pseristent volume claim: kubectl get pv,pvc
+30. Command to expose deployment to create clusterIP service. kubectl expose deploy nginx-deployment -n demo
+31. Command to scale deployment:  kubectl scale deployment nginx-deployment --replicas=5 -n demo
 
          
  
